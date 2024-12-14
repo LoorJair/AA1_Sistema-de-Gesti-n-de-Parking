@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="Interfaz" package="parqueadero" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="modeloTabla" type="DefaultTableModel" visibility="public"/>
+        <Field name="conexionDB" type="conexion_mysql" visibility="public"/>
+        <Field name="btnConsultar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnRegistrar" type="javax.swing.JButton" visibility="public"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="tablaVehiculos" type="javax.swing.JTable" visibility="public"/>
+        <Field name="txtPlaca" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtPropietario" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtTarifa" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtTipo" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="inicializarTabla" returnType="void" visibility="public"/>
+        <Method name="cargarDatosDesdeBD" returnType="void" visibility="public"/>
+        <Method name="btnRegistrarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnConsultarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="limpiarCampos" returnType="void" visibility="public"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="conexion_mysql" package="parqueadero" visibility="public" xPosition="218.0" yPosition="651.0">
+      <Fields>
+        <Field name="URL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="USER" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PASSWORD" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="conexion" returnType="Connection" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="parqueadero" package="parqueadero" visibility="public" xPosition="552.0" yPosition="592.0">
+      <Fields>
+        <Field name="conexionDB" type="conexion_mysql" visibility="private"/>
+        <Field name="vehiculos" type="ArrayList&lt;vehiculo&gt;" visibility="public"/>
+        <Field name="tarifaCarro" type="double" visibility="public"/>
+        <Field name="tarifaMoto" type="double" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="registrarvehiculo" returnType="boolean" visibility="public">
+          <Argument type="vehiculo" name="vehiculo"/>
+        </Method>
+        <Method name="calcularTarifa" returnType="double" visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="int" name="horas"/>
+        </Method>
+        <Method name="actualizarVehiculos" returnType="void" visibility="public">
+          <Argument type="String" name="placa"/>
+          <Argument type="String" name="nuevoTipo"/>
+          <Argument type="String" name="nuevoPropietario"/>
+          <Argument type="double" name="nuevaTarifa"/>
+          <Argument type="Timestamp" name="nuevaHoraIngreso"/>
+        </Method>
+        <Method name="actualizarTarifa" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="double" name="nuevaTarifa"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="vehiculo" package="parqueadero" visibility="public" xPosition="774.0" yPosition="32.0">
+      <Fields>
+        <Field name="placa" type="String" visibility="public"/>
+        <Field name="tipo" type="String" visibility="public"/>
+        <Field name="tarifa" type="double" visibility="public"/>
+        <Field name="propietario" type="String" visibility="private"/>
+        <Field name="horaIngreso" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="placa"/>
+          <Argument type="String" name="tipo"/>
+          <Argument type="String" name="propietario"/>
+          <Argument type="String" name="horaIngreso"/>
+          <Argument type="double" name="tarifa"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPropietario" returnType="String" visibility="public"/>
+        <Method name="setPropietario" returnType="void" visibility="public">
+          <Argument type="String" name="propietario"/>
+        </Method>
+        <Method name="getHoraIngreso" returnType="String" visibility="public"/>
+        <Method name="setHoraIngreso" returnType="void" visibility="public">
+          <Argument type="String" name="horaIngreso"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="mostrarInformacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="vehiculos" source="parqueadero.parqueadero" target="parqueadero.vehiculo" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;vehiculo&gt;"/>
+    <UseRelation source="parqueadero.parqueadero" target="parqueadero.vehiculo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="conexionDB" source="parqueadero.Interfaz" target="parqueadero.conexion_mysql" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="parqueadero.parqueadero" target="parqueadero.conexion_mysql"/>
+    <HasRelation name="conexionDB" source="parqueadero.parqueadero" target="parqueadero.conexion_mysql" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
